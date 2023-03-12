@@ -17,7 +17,7 @@ public class Member extends BaseEntity {
     @Id @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)//member 없어지면, 해당 포스트 댓글 전부 사라짐
     private List<Post> posts = new ArrayList<>();
 
     @JsonIgnore
